@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
@@ -30,9 +30,21 @@ export class AdminService {
     });
   }
 
-  getAllProducts(): Observable<any> {
+  // getAllProducts(page: number, size: number, sort: string): Observable<any> {
+  //   return this.http.get(BASIC_URL + 'api/admin/products', {
+  //     headers: this.createAuthorizationHeader(),
+  //   });
+  // }
+
+  getAllProducts(page: number, size: number, sort: string): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+      .set('sort', sort);
+
     return this.http.get(BASIC_URL + 'api/admin/products', {
       headers: this.createAuthorizationHeader(),
+      params,
     });
   }
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
@@ -30,23 +30,15 @@ export class AdminService {
     });
   }
 
-  // getAllProducts(page: number, size: number, sort: string): Observable<any> {
-  //   return this.http.get(BASIC_URL + 'api/admin/products', {
-  //     headers: this.createAuthorizationHeader(),
-  //   });
-  // }
-
-  getAllProducts(page: number, size: number, sort: string): Observable<any> {
-    let params = new HttpParams()
-      .set('page', page)
-      .set('size', size)
-      .set('sort', sort);
-
+  getAllProducts(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/admin/products', {
       headers: this.createAuthorizationHeader(),
-      params,
     });
   }
+
+  // getPaginatedProducts(page: number, size: number): Observable<any> {
+  //   return this.http.get<any>(`/api/products?page=${page}&size=${size}`);
+  // }
 
   getAllProductsByName(name: any): Observable<any> {
     return this.http.get(BASIC_URL + `api/admin/search/${name}`, {
@@ -54,10 +46,19 @@ export class AdminService {
     });
   }
 
-  deleteProduct(productId: any): Observable<any> {
-    return this.http.delete(BASIC_URL + `api/admin/product/${productId}`, {
-      headers: this.createAuthorizationHeader(),
-    });
+  // deleteProduct(productId: any): Observable<any> {
+  //   return this.http.delete(BASIC_URL + `api/admin/product/${productId}`, {
+  //     headers: this.createAuthorizationHeader(),
+  //   });
+  // }
+  deleteProduct(productId: any): Observable<HttpResponse<any>> {
+    return this.http.delete<HttpResponse<any>>(
+      BASIC_URL + `api/admin/product/${productId}`, 
+      {
+        headers: this.createAuthorizationHeader(),
+        observe: 'response', // Observe the full response
+      }
+    );
   }
 
   private createAuthorizationHeader(): HttpHeaders {

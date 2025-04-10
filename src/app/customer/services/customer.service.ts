@@ -30,7 +30,17 @@ export class CustomerService {
       productId: productId,
       userId: UserStorageService.getUserId(),
     };
+    console.log(cartDto.productId);
+    console.log(cartDto.userId);
     return this.http.post(BASIC_URL2 + `api/customer/cart`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getCartByUserId(): Observable<any> {
+    
+    const userId = UserStorageService.getUserId();
+    return this.http.get(BASIC_URL2 + `api/customer/cart/${userId}`,  {
       headers: this.createAuthorizationHeader(),
     });
   }

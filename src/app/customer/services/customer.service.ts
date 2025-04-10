@@ -30,9 +30,29 @@ export class CustomerService {
       productId: productId,
       userId: UserStorageService.getUserId(),
     };
-    console.log(cartDto.productId);
-    console.log(cartDto.userId);
+    // console.log(cartDto.productId);
+    // console.log(cartDto.userId);
     return this.http.post(BASIC_URL2 + `api/customer/cart`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  increaseProductQuantity(productId: any): Observable<any> {
+    const cartDto = {
+      productId: productId,
+      userId: UserStorageService.getUserId(),
+    };
+    return this.http.post(BASIC_URL2 + `api/customer/addition`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  decreaseProductQuantity(productId: any): Observable<any> {
+    const cartDto = {
+      productId: productId,
+      userId: UserStorageService.getUserId(),
+    };
+    return this.http.post(BASIC_URL2 + `api/customer/deduction`, cartDto, {
       headers: this.createAuthorizationHeader(),
     });
   }

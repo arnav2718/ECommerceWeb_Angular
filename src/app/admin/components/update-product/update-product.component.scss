@@ -1,0 +1,93 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3f51b5;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.container .file-upload-container .file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.container .file-upload-container .file-upload-label span {
+  margin-right: 8px;
+}
+
+.container .file-upload-container .file-upload-label mat-icon {
+  font-size: 20px;
+}
+
+/* Circle image preview */
+.container .file-upload-container .image-preview {
+  margin-top: 15px;
+}
+
+.container .file-upload-container .circle-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.container .file-upload-container .preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container mat-form-field {
+  margin-bottom: 20px;
+}
+
+.container mat-form-field .mat-form-field-wrapper {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.container mat-form-field .mat-form-field-outline {
+  border-width: 1px;
+}
+
+.container mat-form-field .mat-input-element {
+  color: #3f51b5;
+}
+
+.container button {
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .container form mat-form-field {
+    margin-bottom: 10px;
+  }
+}

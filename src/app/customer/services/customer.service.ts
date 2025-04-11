@@ -58,9 +58,15 @@ export class CustomerService {
   }
 
   getCartByUserId(): Observable<any> {
-    
     const userId = UserStorageService.getUserId();
-    return this.http.get(BASIC_URL2 + `api/customer/cart/${userId}`,  {
+    return this.http.get(BASIC_URL2 + `api/customer/cart/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  placeOrder(OrderDto:any): Observable<any> {
+    OrderDto.userId = UserStorageService.getUserId();
+    return this.http.post(BASIC_URL2 + `api/customer/placeOrder`,OrderDto, {
       headers: this.createAuthorizationHeader(),
     });
   }

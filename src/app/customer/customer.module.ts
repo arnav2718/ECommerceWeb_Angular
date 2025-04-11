@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { CartComponent } from './components/cart/cart.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
 
 @NgModule({
-  declarations: [CustomerComponent, DashboardComponent, CartComponent],
+  declarations: [CustomerComponent, DashboardComponent, CartComponent, PlaceOrderComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

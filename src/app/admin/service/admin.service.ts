@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
-// const BASIC_URL = 'http://localhost:8082/';
 const BASIC_URL = 'http://localhost:8765/ecommproservice/';
+
+const BASIC_URL2 = 'http://localhost:8765/ecommorderservice/';
 
 @Injectable({
   providedIn: 'root',
@@ -53,12 +54,18 @@ export class AdminService {
   // }
   deleteProduct(productId: any): Observable<HttpResponse<any>> {
     return this.http.delete<HttpResponse<any>>(
-      BASIC_URL + `api/admin/product/${productId}`, 
+      BASIC_URL + `api/admin/product/${productId}`,
       {
         headers: this.createAuthorizationHeader(),
         observe: 'response', // Observe the full response
       }
     );
+  }
+
+  getPlacedOrders(): Observable<any> {
+    return this.http.get(BASIC_URL2 + `api/admin/placedOrders`, {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 
   private createAuthorizationHeader(): HttpHeaders {

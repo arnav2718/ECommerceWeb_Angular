@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { PostProductComponent } from './components/post-product/post-product.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { PostProductComponent } from './components/post-product/post-product.com
     DashboardComponent,
     PostCategoryComponent,
     PostProductComponent,
+    OrdersComponent,
   ],
   imports: [
     CommonModule,

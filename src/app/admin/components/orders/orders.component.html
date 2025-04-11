@@ -1,5 +1,6 @@
 <div class="container">
     <mat-card>
+        <!-- <mat-card-title class="title">Orders Summary</mat-card-title> -->
         <mat-card-content>
             <table mat-table [dataSource]="orders" class="mat-elevation-z8 order-table">
 
@@ -70,7 +71,7 @@
                     *matHeaderRowDef="['trackingId','userName','amount','description','address','date','status','action']">
                 </tr>
                 <tr mat-row
-                    *matRowDef="['trackingId','userName','amount','description','address','date','status','action']">
+                    *matRowDef="let row;columns:['trackingId','userName','amount','description','address','date','status','action']">
                 </tr>
 
             </table>

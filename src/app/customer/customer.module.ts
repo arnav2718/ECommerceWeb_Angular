@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 @NgModule({
-  declarations: [CustomerComponent, DashboardComponent, CartComponent, PlaceOrderComponent],
+  declarations: [CustomerComponent, DashboardComponent, CartComponent, PlaceOrderComponent, MyOrdersComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

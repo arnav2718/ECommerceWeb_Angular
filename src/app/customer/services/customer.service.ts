@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
+
 const BASIC_URL1 = 'http://localhost:8765/ecommproservice/';
 
 const BASIC_URL2 = 'http://localhost:8765/ecommorderservice/';
@@ -64,9 +65,16 @@ export class CustomerService {
     });
   }
 
-  placeOrder(OrderDto:any): Observable<any> {
+  placeOrder(OrderDto: any): Observable<any> {
     OrderDto.userId = UserStorageService.getUserId();
-    return this.http.post(BASIC_URL2 + `api/customer/placeOrder`,OrderDto, {
+    return this.http.post(BASIC_URL2 + `api/customer/placeOrder`, OrderDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getOrdersByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(BASIC_URL2 + `api/customer/myOrders/${userId}`, {
       headers: this.createAuthorizationHeader(),
     });
   }

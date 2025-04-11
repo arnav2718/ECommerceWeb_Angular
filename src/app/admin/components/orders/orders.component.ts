@@ -15,13 +15,27 @@ export class OrdersComponent {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.getPlacedOrders();
   }
 
   getPlacedOrders() {
-    this.adminService.getPlacedOrders().subscribe(res =>{
+    this.adminService.getPlacedOrders().subscribe((res) => {
       this.orders = res;
-    })
+    });
+  }
+  changeOrderStatus(orderId: number, status: string) {
+    this.adminService.changeOrderStatus(orderId, status).subscribe((res) => {
+      if (res.id != null) {
+        this.snackBar.open('Order Status changed successfully', 'Close', {
+          duration: 5000,
+        });
+        this.getPlacedOrders();
+      } else {
+        this.snackBar.open('Failed to change order status', 'Close', {
+          duration: 5000,
+        });
+      }
+    });
   }
 }

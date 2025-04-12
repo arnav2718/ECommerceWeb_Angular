@@ -10,9 +10,10 @@ import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { ViewOrderedProductsComponent } from './components/view-ordered-products/view-ordered-products.component';
 
 @NgModule({
-  declarations: [CustomerComponent, DashboardComponent, CartComponent, PlaceOrderComponent, MyOrdersComponent],
+  declarations: [CustomerComponent, DashboardComponent, CartComponent, PlaceOrderComponent, MyOrdersComponent, ViewOrderedProductsComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

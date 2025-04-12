@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
-
 const BASIC_URL1 = 'http://localhost:8765/ecommproservice/';
 
 const BASIC_URL2 = 'http://localhost:8765/ecommorderservice/';
@@ -77,6 +76,16 @@ export class CustomerService {
     return this.http.get(BASIC_URL2 + `api/customer/myOrders/${userId}`, {
       headers: this.createAuthorizationHeader(),
     });
+  }
+
+  getOrderedProducts(orderId: number): Observable<any> {
+    // console.log('hello');
+    return this.http.get(
+      BASIC_URL2 + `api/customer/ordered-products/${orderId}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
   }
 
   private createAuthorizationHeader(): HttpHeaders {

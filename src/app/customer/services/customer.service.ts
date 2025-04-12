@@ -93,6 +93,15 @@ export class CustomerService {
     });
   }
 
+  getProductDetailById(productId: number): Observable<any> {
+    return this.http.get(
+      BASIC_URL1 + `api/customer/product/${productId}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization',

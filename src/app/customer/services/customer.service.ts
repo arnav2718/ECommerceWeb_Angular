@@ -79,13 +79,18 @@ export class CustomerService {
   }
 
   getOrderedProducts(orderId: number): Observable<any> {
-    // console.log('hello');
     return this.http.get(
       BASIC_URL2 + `api/customer/ordered-products/${orderId}`,
       {
         headers: this.createAuthorizationHeader(),
       }
     );
+  }
+
+  giveReview(reviewDto: any): Observable<any> {
+    return this.http.post(BASIC_URL2 + `api/customer/review`, reviewDto, {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 
   private createAuthorizationHeader(): HttpHeaders {

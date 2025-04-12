@@ -16,11 +16,9 @@ export class ViewOrderedProductsComponent {
     private activatedroute: ActivatedRoute,
     private customerService: CustomerService
   ) {
-    // console.log('constructor called');
   }
 
-  ngonInit() {
-    console.log('hello');
+  ngOnInit() {
     this.getOrderedProductsDetailsByOrderId();
   }
 

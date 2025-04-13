@@ -91,6 +91,13 @@ export class AdminService {
       headers: this.createAuthorizationHeader(),
     });
   }
+  
+  getAnalytics(): Observable<any> {
+    return this.http.get(BASIC_URL2 + 'api/admin/order/analytics', {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(

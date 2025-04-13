@@ -94,12 +94,22 @@ export class CustomerService {
   }
 
   getProductDetailById(productId: number): Observable<any> {
-    return this.http.get(
-      BASIC_URL1 + `api/customer/product/${productId}`,
-      {
-        headers: this.createAuthorizationHeader(),
-      }
-    );
+    return this.http.get(BASIC_URL1 + `api/customer/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  addProductToWishlist(wishlistDto: any): Observable<any> {
+    return this.http.post(BASIC_URL2 + `api/customer/wishlist`, wishlistDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getWishlistByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(BASIC_URL2 + `api/customer/wishlist/${userId}`,  {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 
   private createAuthorizationHeader(): HttpHeaders {
